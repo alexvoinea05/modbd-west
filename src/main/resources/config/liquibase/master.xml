@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="floatType" value="float" dbms="oracle"/>
+    <property name="clobType" value="clob" dbms="oracle"/>
+    <property name="blobType" value="blob" dbms="oracle"/>
+    <property name="uuidType" value="uuid" dbms="oracle"/>
+    <property name="datetimeType" value="datetime" dbms="oracle"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113135_added_entity_AddressWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113136_added_entity_AppUserWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113137_added_entity_CityWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113138_added_entity_CompanyWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113139_added_entity_CompanyLicenseWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113140_added_entity_DistrictWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113141_added_entity_FuelTypeWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113142_added_entity_JourneyWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113143_added_entity_JourneyStatusWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113144_added_entity_LicenseWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113145_added_entity_RailwayStationWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113146_added_entity_RailwayTypeWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113147_added_entity_TicketWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113148_added_entity_TrainWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113149_added_entity_TrainTypeWest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230513113150_added_entity_UserTypeWest.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20230513113139_added_entity_constraints_CompanyLicenseWest.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

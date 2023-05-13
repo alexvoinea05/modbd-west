@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230513113148",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "train_west",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numberOfSeats",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "fuelTypeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "trainTypeId",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TrainWest",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

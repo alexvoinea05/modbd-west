@@ -1,0 +1,135 @@
+
+
+entity AddressWest {
+@Id id Long,
+streetNumber String,
+street String,
+zipcode String
+cityId Long
+
+}
+
+entity AppUserWest {
+@Id id Long,
+password String,
+cnp String
+}
+
+entity CityWest {
+@Id id Long,
+name String,
+districtId Long
+
+}
+
+entity CompanyWest {
+@Id id Long,
+name String,
+identificationNumber String
+}
+
+entity CompanyLicenseWest {
+@Id id Long
+}
+
+entity DistrictWest {
+@Id id Long,
+name String,
+region String
+}
+
+entity FuelTypeWest {
+@Id id Long,
+code String,
+description String
+}
+
+entity JourneyWest {
+@Id id Long,
+distance Double,
+journeyDuration Double,
+actualDepartureTime ZonedDateTime,
+	plannedDepartureTime ZonedDateTime,
+	actualArrivalTime ZonedDateTime,
+	plannedArrivalTime ZonedDateTime,
+	ticketPrice Double,
+	numberOfStops Integer,
+	timeOfStops Double,
+	minutesLate Double
+	journeyStatusId Long,
+	trainId Long,
+	companyId Long,
+	departureRailwayStationId Long,
+	arrivalRailwayStationId Long
+}
+
+entity JourneyStatusWest{
+	@Id id Long,
+    code String,
+    description String
+}
+
+entity LicenseWest {
+	@Id id Long,
+    licenseNumber Long,
+    licenseDescription String
+}
+
+entity RailwayStationWest{
+	@Id id Long,
+    railwayStationName String
+	railwayTypeId Long,
+	addressId Long
+}
+
+entity RailwayTypeWest{
+	@Id id Long,
+    code String,
+    description String
+}
+
+entity TicketWest{
+	@Id id Long,
+    finalPrice Double,
+    quantity Integer,
+	time ZonedDateTime
+	appUserId Long,
+	journeyId Long
+}
+
+entity TrainWest {
+@Id id Long,
+    code String,
+    numberOfSeats Long
+	fuelTypeId Long,
+	trainTypeId Long
+}
+
+entity TrainTypeWest {
+@Id id Long,
+    code String,
+    description String
+}
+
+entity UserTypeWest {
+@Id id Long,
+    code String,
+    discount Double
+}
+
+relationship OneToMany {
+    CompanyWest to CompanyLicenseWest{idCompany},
+    LicenseWest to CompanyLicenseWest{idLicense}
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

@@ -1,0 +1,191 @@
+<div>
+  <h2 id="page-heading" data-cy="JourneyWestHeading">
+    <span>Journey Wests</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-journey-west"
+        [routerLink]="['/journey-west/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Journey West </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="journeyWests?.length === 0">
+    <span>No Journey Wests found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="journeyWests && journeyWests.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="distance">
+            <div class="d-flex">
+              <span>Distance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="journeyDuration">
+            <div class="d-flex">
+              <span>Journey Duration</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actualDepartureTime">
+            <div class="d-flex">
+              <span>Actual Departure Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="plannedDepartureTime">
+            <div class="d-flex">
+              <span>Planned Departure Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actualArrivalTime">
+            <div class="d-flex">
+              <span>Actual Arrival Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="plannedArrivalTime">
+            <div class="d-flex">
+              <span>Planned Arrival Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ticketPrice">
+            <div class="d-flex">
+              <span>Ticket Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numberOfStops">
+            <div class="d-flex">
+              <span>Number Of Stops</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timeOfStops">
+            <div class="d-flex">
+              <span>Time Of Stops</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="minutesLate">
+            <div class="d-flex">
+              <span>Minutes Late</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="journeyStatusId">
+            <div class="d-flex">
+              <span>Journey Status Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="trainId">
+            <div class="d-flex">
+              <span>Train Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="companyId">
+            <div class="d-flex">
+              <span>Company Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="departureRailwayStationId">
+            <div class="d-flex">
+              <span>Departure Railway Station Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="arrivalRailwayStationId">
+            <div class="d-flex">
+              <span>Arrival Railway Station Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody
+        infinite-scroll
+        (scrolled)="loadPage(page + 1)"
+        [infiniteScrollDisabled]="page - 1 >= links['last']"
+        [infiniteScrollDistance]="0"
+      >
+        <tr *ngFor="let journeyWest of journeyWests; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/journey-west', journeyWest.id, 'view']">{{ journeyWest.id }}</a>
+          </td>
+          <td>{{ journeyWest.distance }}</td>
+          <td>{{ journeyWest.journeyDuration }}</td>
+          <td>{{ journeyWest.actualDepartureTime | formatMediumDatetime }}</td>
+          <td>{{ journeyWest.plannedDepartureTime | formatMediumDatetime }}</td>
+          <td>{{ journeyWest.actualArrivalTime | formatMediumDatetime }}</td>
+          <td>{{ journeyWest.plannedArrivalTime | formatMediumDatetime }}</td>
+          <td>{{ journeyWest.ticketPrice }}</td>
+          <td>{{ journeyWest.numberOfStops }}</td>
+          <td>{{ journeyWest.timeOfStops }}</td>
+          <td>{{ journeyWest.minutesLate }}</td>
+          <td>{{ journeyWest.journeyStatusId }}</td>
+          <td>{{ journeyWest.trainId }}</td>
+          <td>{{ journeyWest.companyId }}</td>
+          <td>{{ journeyWest.departureRailwayStationId }}</td>
+          <td>{{ journeyWest.arrivalRailwayStationId }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/journey-west', journeyWest.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/journey-west', journeyWest.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(journeyWest)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

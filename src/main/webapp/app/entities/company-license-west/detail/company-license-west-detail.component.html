@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="companyLicenseWest">
+      <h2 data-cy="companyLicenseWestDetailsHeading"><span>Company License West</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ companyLicenseWest.id }}</span>
+        </dd>
+        <dt><span>Id Company</span></dt>
+        <dd>
+          <div *ngIf="companyLicenseWest.idCompany">
+            <a [routerLink]="['/company-west', companyLicenseWest.idCompany.id, 'view']">{{ companyLicenseWest.idCompany.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Id License</span></dt>
+        <dd>
+          <div *ngIf="companyLicenseWest.idLicense">
+            <a [routerLink]="['/license-west', companyLicenseWest.idLicense.id, 'view']">{{ companyLicenseWest.idLicense.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/company-license-west', companyLicenseWest.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

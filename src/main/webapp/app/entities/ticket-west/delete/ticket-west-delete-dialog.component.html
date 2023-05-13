@@ -1,0 +1,22 @@
+<form *ngIf="ticketWest" name="deleteForm" (ngSubmit)="confirmDelete(ticketWest.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="ticketWestDeleteDialogHeading">Confirm delete operation</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <p id="jhi-delete-ticketWest-heading">Are you sure you want to delete Ticket West {{ ticketWest.id }}?</p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+    </button>
+
+    <button id="jhi-confirm-delete-ticketWest" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span>Delete</span>
+    </button>
+  </div>
+</form>

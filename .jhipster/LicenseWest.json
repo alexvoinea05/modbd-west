@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20230513113144",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "license_west",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "licenseNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "licenseDescription",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "LicenseWest",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "companyLicenseWest",
+      "otherEntityRelationshipName": "idLicense",
+      "relationshipName": "companyLicenseWest",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

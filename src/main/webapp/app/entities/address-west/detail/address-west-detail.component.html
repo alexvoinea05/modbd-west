@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="addressWest">
+      <h2 data-cy="addressWestDetailsHeading"><span>Address West</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ addressWest.id }}</span>
+        </dd>
+        <dt><span>Street Number</span></dt>
+        <dd>
+          <span>{{ addressWest.streetNumber }}</span>
+        </dd>
+        <dt><span>Street</span></dt>
+        <dd>
+          <span>{{ addressWest.street }}</span>
+        </dd>
+        <dt><span>Zipcode</span></dt>
+        <dd>
+          <span>{{ addressWest.zipcode }}</span>
+        </dd>
+        <dt><span>City Id</span></dt>
+        <dd>
+          <span>{{ addressWest.cityId }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address-west', addressWest.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
